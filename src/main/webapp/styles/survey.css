@@ -28,7 +28,9 @@ body {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-header img { margin-bottom: 1em; }
+header img {
+    margin-bottom: 1em;
+}
 
 h1 {
     color: var(--dark-blue);
@@ -47,11 +49,10 @@ h2 {
     margin: 1.5em 0 1em 0;
 }
 
-/* SỬA LỖI TẠI ĐÂY: Áp dụng Grid cho lớp .form-grid thay vì cả section */
 .form-grid {
     display: grid;
     grid-template-columns: 140px 1fr;
-    row-gap: 1em; /* Khoảng cách giữa các hàng */
+    row-gap: 1em;
     align-items: center;
 }
 
@@ -71,17 +72,20 @@ select {
     border-radius: 4px;
     font-family: inherit;
     font-size: 1em;
-    transition: border-color 0.3s;
+    box-sizing: border-box;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="date"]:focus {
+input[type="text"]:focus-visible,
+input[type="email"]:focus-visible,
+input[type="date"]:focus-visible,
+select:focus-visible {
     border-color: var(--primary-color);
-    outline: none;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 1px;
 }
 
-.radio-group, .checkbox-group {
+.radio-group,
+.checkbox-group {
     display: flex;
     flex-direction: column;
     gap: 0.8em;
@@ -93,7 +97,8 @@ input[type="date"]:focus {
     gap: 1.5em;
 }
 
-.radio-group label, .checkbox-group label {
+.radio-group label,
+.checkbox-group label {
     display: flex;
     align-items: center;
     gap: 0.5em;
@@ -102,7 +107,8 @@ input[type="date"]:focus {
     color: var(--text-color);
 }
 
-input[type="radio"], input[type="checkbox"] {
+input[type="radio"],
+input[type="checkbox"] {
     width: 1.2em;
     height: 1.2em;
     cursor: pointer;
@@ -130,12 +136,12 @@ input[type="radio"], input[type="checkbox"] {
     font-weight: 600;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
     margin-top: 1.5em;
 }
 
-.btn-submit:hover { background-color: deeppink; }
-.btn-submit:active { transform: scale(0.98); }
+.btn-submit:hover {
+    background-color: deeppink;
+}
 
 footer {
     margin-top: 3em;
@@ -144,4 +150,19 @@ footer {
     text-align: center;
     font-size: 0.85em;
     color: #888;
+}
+
+@media (max-width: 480px) {
+    .survey-card {
+        padding: 1.5em;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
